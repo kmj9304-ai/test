@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>원페이지 포트폴리오 — Toss 스타일</title>
+  <meta name="description" content="Toss 디자이너 감성의 원페이지 포트폴리오. 학력·자격증·주요 프로젝트 3개를 심플하게 정리." />
+  <meta name="theme-color" content="#1061ff" />
+  <style>
+    /* Reset */
+    *,*::before,*::after{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    img,svg,video,canvas{display:block;max-width:100%}
+    button,input,select,textarea{font:inherit}
+
+    :root{
+      --brand:#1061ff;--ok:#16a34a;--ink:#0f172a;--muted:#64748b;--bg:#ffffff;--card:#ffffff;--line:#e2e8f0;--shadow:0 10px 30px rgba(2,6,23,.08);
+      --r-xl:22px;--r-lg:16px;--r-md:12px;--r-sm:10px;--container:980px
+    }
+    @media (prefers-color-scheme:dark){:root{--bg:#0b1220;--ink:#e6edf6;--card:#0f172a;--line:#1f2a44;--shadow:0 10px 30px rgba(0,0,0,.5)}}
+    .dark{--bg:#0b1220;--ink:#e6edf6;--card:#0f172a;--line:#1f2a44;--shadow:0 10px 30px rgba(0,0,0,.5)}
+
+    body{background:radial-gradient(1200px 600px at 10% -10%, rgba(16,97,255,.09), transparent 60%),radial-gradient(1100px 700px at 90% -20%, rgba(34,197,94,.08), transparent 60%),var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",Roboto,system-ui,Arial,sans-serif}
+    .container{max-width:var(--container);margin:0 auto;padding:0 20px}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Header */
+    header.site{position:sticky;top:0;z-index:40;background:color-mix(in srgb, var(--bg) 70%, transparent);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{width:28px;height:28px;border-radius:10px;background:conic-gradient(from 0deg,var(--brand),var(--ok),var(--brand));box-shadow:var(--shadow)}
+    .brand strong{font-size:18px;font-weight:900}
+    .nav a{padding:8px 12px;border-radius:12px}
+    .nav a:hover{background:color-mix(in srgb, var(--brand) 10%, transparent)}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:14px;padding:10px 14px;background:var(--card);box-shadow:0 1px 0 rgba(2,6,23,.04);cursor:pointer}
+    .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+    .btn.ghost{background:transparent}
+
+    /* Sections */
+    section{padding:56px 0}
+    section>header{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:16px}
+    h2.title{font-size:28px;margin:0;font-weight:900}
+    p.subtitle{color:var(--muted);margin:6px 0 0}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;box-shadow:var(--shadow)}
+    .muted{color:var(--muted)}
+    .hide-sm{display:block}
+    @media (max-width:900px){.grid-3,.grid-2{grid-template-columns:1fr}.hide-sm{display:none}}
+
+    /* Hero */
+    .hero{padding:72px 0 40px}
+    .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+    .hero h1{font-size:44px;line-height:1.15;margin:0 0 10px;font-weight:900}
+    .hero p.lead{color:var(--muted);font-size:18px;margin:0 0 14px}
+    .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .kpi{padding:14px;border:1px dashed var(--line);border-radius:14px}
+    .kpi .n{font-size:22px;font-weight:900}
+
+    /* Project card */
+    .proj h3{margin:0}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+    .tag{padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:var(--muted)}
+
+    /* Footer */
+    footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted)}
+
+    /* Print */
+    @media print{header.site,.hide-print{display:none!important}.card{box-shadow:none}}
+  </style>
+</head>
+<body>
+  <a class="sr-only" href="#main">본문 바로가기</a>
+  <header class="site">
+    <div class="container nav" role="navigation" aria-label="주요">
+      <div class="brand"><div class="logo" aria-hidden="true"></div><strong id="brand">이름 · Portfolio</strong></div>
+      <nav class="hide-sm">
+        <a href="#about">소개</a>
+        <a href="#education">학력</a>
+        <a href="#certs">자격증</a>
+        <a href="#projects">프로젝트</a>
+        <a href="#contact">연락처</a>
+      </nav>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button id="themeBtn" class="btn ghost" aria-pressed="false" title="라이트/다크 전환">🌓 테마</button>
+        <button id="printBtn" class="btn primary" title="PDF 저장">📄 PDF</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero / About -->
+    <section id="about" class="hero">
+      <div class="container">
+        <div class="wrap">
+          <div>
+            <h1 id="name">홍길동</h1>
+            <p class="lead" id="role">직무 타이틀 · 한 줄 소개</p>
+            <p id="summary" class="muted">핵심 역량/경험을 한두 줄로 요약합니다. 데이터 기반 문제 해결, 사용자 중심 설계, 협업에 강점이 있습니다.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+              <a class="btn primary" href="#projects">대표 프로젝트 보기</a>
+              <a class="btn" href="#contact">컨택하기</a>
+            </div>
+          </div>
+          <div>
+            <div class="kpis">
+              <div class="kpi"><div class="t muted">총 경력</div><div class="n" id="kpiYears">—</div></div>
+              <div class="kpi"><div class="t muted">주요 도메인</div><div class="n" id="kpiDomain">—</div></div>
+              <div class="kpi"><div class="t muted">핵심 스킬</div><div class="n" id="kpiSkill">—</div></div>
+              <div class="kpi"><div class="t muted">이메일</div><div class="n" id="kpiEmail">—</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <div class="container">
+        <header>
+          <div>
+            <h2 class="title">학력</h2>
+            <p class="subtitle">기본 학력과 전공</p>
+          </div>
+        </header>
+        <div class="card" id="eduList"></div>
+      </div>
+    </section>
+
+    <!-- Certs -->
+    <section id="certs">
+      <div class="container">
+        <header>
+          <div>
+            <h2 class="title">자격증</h2>
+            <p class="subtitle">직무 연관 자격증 중심</p>
+          </div>
+        </header>
+        <div class="card" id="certList"></div>
+      </div>
+    </section>
+
+    <!-- Projects (3) -->
+    <section id="projects">
+      <div class="container">
+        <header>
+          <div>
+            <h2 class="title">대표 프로젝트 3</h2>
+            <p class="subtitle">성과 중심 요약 (문제 → 접근 → 결과)</p>
+          </div>
+        </header>
+        <div class="grid-3" id="projGrid"></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <header>
+          <div>
+            <h2 class="title">연락처</h2>
+            <p class="subtitle">이메일·링크</p>
+          </div>
+        </header>
+        <div class="grid-2">
+          <div class="card">
+            <p><strong>이메일</strong> : <a id="emailLink" href="#">—</a> <button class="btn ghost hide-print" id="copyEmail">복사</button></p>
+            <p><strong>전화</strong> : <span id="phone">—</span></p>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0">링크</h3>
+            <ul id="linkList" style="margin:8px 0 0;padding-left:18px"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> <span id="footerName">홍길동</span>. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // ========= 데이터만 수정하면 전체 페이지 갱신 =========
+    const DATA = {
+      profile: {
+        name: "홍길동",
+        role: "데이터 마케터 · CRM & Growth",
+        summary: "데이터 기반 실험과 사용자 여정 최적화로 전환·리텐션 성과를 만듭니다.",
+        years: 7,
+        domain: ["금융", "이커머스"],
+        topSkill: ["SQL", "Python", "CRM"],
+        email: "hello@example.com",
+        phone: "010-1234-5678",
+        links: [
+          { name: "LinkedIn", url: "https://example.com" },
+          { name: "GitHub", url: "https://example.com" },
+          { name: "포트폴리오(노션)", url: "https://example.com" }
+        ]
+      },
+      education: [
+        { name: "○○대학교", degree: "건축공학과 학사", period: "2010 — 2014", note: "데이터·구조 설계 스튜디오" }
+      ],
+      certs: [
+        "투자자산운용사 (2023)",
+        "국가공인 신용분석사 (2023)",
+        "건축기사 (보유)"
+      ],
+      projects: [
+        {
+          title: "리텐션 CRM 자동화",
+          tags: ["CRM", "SQL", "Python"],
+          summary: "휴면률이 높아지는 문제를 세그먼트·여정 기반 자동화로 해결.",
+          points: [
+            "세그먼트 8종 및 메시지 캘린더 설계",
+            "A/B 테스트로 오픈·전환 개선",
+            "재방문율 +15%, 휴면률 -10%"
+          ],
+          link: "#"
+        },
+        {
+          title: "퍼널 대시보드 구축",
+          tags: ["GA4", "Looker", "BigQuery"],
+          summary: "전환 병목을 실시간으로 가시화하여 의사결정 리드타임 단축.",
+          points: ["ETL 파이프라인 구성", "이상감지 알림", "리드타임 -40%"],
+          link: "#"
+        },
+        {
+          title: "온보딩 UX 개선",
+          tags: ["UX", "Microcopy", "A/B"],
+          summary: "가입 폼 이탈 문제를 UX 라이팅과 폼 구조 개선으로 해결.",
+          points: ["에러메시지/가이드 개선", "스텝 최소화", "완료율 +9%"],
+          link: "#"
+        }
+      ]
+    };
+
+    // ========= 바인딩 =========
+    const $ = s=>document.querySelector(s);
+
+    function initProfile(){
+      $('#brand').textContent = `${DATA.profile.name} · Portfolio`;
+      $('#name').textContent = DATA.profile.name;
+      $('#role').textContent = DATA.profile.role;
+      $('#summary').textContent = DATA.profile.summary;
+      $('#kpiYears').textContent = `${DATA.profile.years}년`;
+      $('#kpiDomain').textContent = DATA.profile.domain.join(' · ');
+      $('#kpiSkill').textContent = DATA.profile.topSkill.join(' · ');
+      $('#kpiEmail').textContent = DATA.profile.email;
+      $('#emailLink').textContent = DATA.profile.email;
+      $('#emailLink').href = `mailto:${DATA.profile.email}`;
+      $('#phone').textContent = DATA.profile.phone;
+      const ul = $('#linkList');
+      DATA.profile.links.forEach(l=>{ const li=document.createElement('li'); li.innerHTML = `<a target="_blank" href="${l.url}">${l.name}</a>`; ul.appendChild(li); });
+      $('#footerName').textContent = DATA.profile.name;
+    }
+
+    function initEdu(){
+      const box = $('#eduList');
+      box.innerHTML = `<ul style='margin:0;padding-left:18px'>${DATA.education.map(e=>`<li><strong>${e.name}</strong> — ${e.degree} <span class='muted'>(${e.period})</span><br/><span class='muted'>${e.note||''}</span></li>`).join('')}</ul>`;
+    }
+
+    function initCerts(){
+      $('#certList').innerHTML = `<ul style='margin:0;padding-left:18px'>${DATA.certs.map(c=>`<li>${c}</li>`).join('')}</ul>`;
+    }
+
+    function initProjects(){
+      const grid = $('#projGrid');
+      DATA.projects.slice(0,3).forEach(p=>{
+        const card = document.createElement('article'); card.className='card proj';
+        card.innerHTML = `<h3>${p.title}</h3>
+          <p class='muted'>${p.summary}</p>
+          <div class='tags'>${p.tags.map(t=>`<span class='tag'>${t}</span>`).join('')}</div>
+          <ul style='margin:6px 0 0;padding-left:18px'>${p.points.map(pt=>`<li>${pt}</li>`).join('')}</ul>
+          ${p.link? `<p style='margin:10px 0 0'><a href='${p.link}' target='_blank'>자세히 보기 →</a></p>`:''}`;
+        grid.appendChild(card);
+      });
+    }
+
+    // ========= Actions =========
+    $('#themeBtn').addEventListener('click', ()=>{
+      const isDark = document.body.classList.toggle('dark');
+      $('#themeBtn').setAttribute('aria-pressed', String(isDark));
+      localStorage.setItem('theme', isDark? 'dark':'light');
+    });
+    (function restoreTheme(){ const t=localStorage.getItem('theme'); if(t==='dark'){document.body.classList.add('dark'); $('#themeBtn').setAttribute('aria-pressed','true');}})();
+    $('#printBtn').addEventListener('click', ()=>window.print());
+    $('#copyEmail')?.addEventListener('click', async()=>{ try{ await navigator.clipboard.writeText(DATA.profile.email); alert('이메일을 복사했습니다'); }catch(e){ alert('복사 실패'); } });
+
+    // ========= Init =========
+    document.addEventListener('DOMContentLoaded', ()=>{
+      $('#year').textContent = new Date().getFullYear();
+      initProfile(); initEdu(); initCerts(); initProjects();
+    });
+  </script>
+</body>
+</html>
